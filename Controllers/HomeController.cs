@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Lista = BD.ListarEquipos; //solucionar error
         return View();
     }
 
