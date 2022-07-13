@@ -1,8 +1,24 @@
-@{
-    ViewData["Title"] = "Detalle Equipo";
+<html>
+    <head>
+        <title> Detalle Equipo </title>
+        
+    </head>
+
+    <body>
+        
+    
+    @foreach(Equipo eq in ViewBag.listaEquipos){
+    <tr>
+        <td>@eq.IdEquipo</td>
+        <td>@eq.Nombre</td>
+        <td>@eq.Escudo</td>
+        <td>
+            <a type="button" class="btn btn-danger" href='@Url.Action("Eliminar", new { id = @eq.IdEquipo } )'>
+                Eliminar
+            </a>
+        </td>
+    </tr>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</body>
+</html>
