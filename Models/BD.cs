@@ -12,7 +12,7 @@ namespace TP6_qatar.Models;
         
         public static void AgregarJugador(Jugador jug)
         {
-            string sql = "INSERT INTO Jugador VALUES (@pidJugador, @pidEquipo, @pnombre, @pfechaDeNacimiento, @pfoto, @pequipoActual";
+            string sql = "INSERT INTO Jugador VALUES (@pidJugador, @pidEquipo, @pnombre, @pfechaDeNacimiento, @pfoto, @pequipoActual)";
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
             db.Execute(sql, new { pidJugador= jug.IdJugador, pidEquipo = jug.idEquipo, pnombre= jug.Nombre, pfechaDeNacimiento = jug.FechaDeNacimiento, pfoto = jug.Foto, pequipoActual = jug.EquipoActual});
@@ -55,7 +55,7 @@ namespace TP6_qatar.Models;
             {
             listaEquipos = db.Query<Equipo>(sql).ToList();
             }
-        return listaEquipos;
+            return listaEquipos;
         }
 
         public static List<Jugador> ListarJugadores(int IdEquipo)
