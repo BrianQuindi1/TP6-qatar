@@ -16,3 +16,6 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.card-image-equipo  {height:115px; width:auto; margin: 0 auto; display:block;}
+.card-image-equipo:hover {opacity:0.7;}

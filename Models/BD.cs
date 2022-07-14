@@ -8,7 +8,7 @@ namespace TP6_qatar.Models;
     public static class BD
     {
         private static string _connectionString = 
-        @"Server=A-CIDI-106;DataBase=TP06-Qatar;Trusted_Connection=True";
+        @"Server=A-AMI-215;DataBase=TP06-Qatar;Trusted_Connection=True";
         
         public static void AgregarJugador(Jugador jug)
         {
