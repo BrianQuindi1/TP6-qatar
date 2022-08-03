@@ -9,15 +9,17 @@ namespace TP6_qatar.Models;
         private string _nombre;
         private string _escudo;
         private string _camiseta;
+        private string _continente;
         private int _copasGanadas;
     
 
-         public Equipo(int idEquipo, string nombre, string escudo, string camiseta, int copasGanadas)
+         public Equipo(int idEquipo, string nombre, string escudo, string camiseta, string continente, int copasGanadas)
          {
             _idEquipo = idEquipo;
             _nombre = nombre;
             _escudo = escudo;
             _camiseta = camiseta;
+            _continente = continente;
             _copasGanadas = copasGanadas;
          } 
         public Equipo()
@@ -26,6 +28,7 @@ namespace TP6_qatar.Models;
             _nombre = "";
             _escudo = "";
             _camiseta = "";
+            _continente = "";
             _copasGanadas = 0;
         }
         
@@ -51,9 +54,16 @@ namespace TP6_qatar.Models;
             get { return _camiseta;}
             set {_camiseta = value;}
         }
+
         public int CopasGanadas
         {
             get { return _copasGanadas;}
             set {_copasGanadas = value;}
+        }
+
+        public string Continente
+        {
+            get { return _continente;}
+            set {_continente = value;}
         }
     }

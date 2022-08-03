@@ -19,11 +19,11 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult VerDetalleEquipo(int IdEquipo)
+    public IActionResult DetalleEquipo(int IdEquipo)
     {
-        ViewBag.Equipo = BD.VerInfoEquipo(IdEquipo);
-        ViewBag.Equipo = BD.ListarJugadores(IdEquipo);
-        return View("DetalleEquipo");
+        ViewBag.DetalleEquipo = BD.VerInfoEquipo(IdEquipo);
+        ViewBag.DetalleJugador = BD.ListarJugadores(IdEquipo);
+        return View();
     }
 
     public IActionResult VerDetalleJugador(int IdJugador)

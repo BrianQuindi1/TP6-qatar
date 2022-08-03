@@ -10,10 +10,10 @@
             {
                 <div class="col-3">
                     <div class="card" style="width: 18rem;">
-                        <a href = '@Url.Action("DetalleEquipo", "Home", new{IdEquipo=eq.IdEquipo})'><img class="card-image-equipo card-img-top" src="/Imagenes/@eq.Escudo"> </a>
+                        <a href = '@Url.Action("DetalleEquipo", "Home", new{IdEquipo= @eq.IdEquipo})'><img class="card-image-equipo card-img-top" src="/Imagenes/@eq.Escudo"> </a>
                         <div class="card-body">
                             <h5 class="card-title">@eq.Nombre</h5>
-                            <a href='@Url.Action("DetalleEquipo","Home", new{IdEquipo=eq.IdEquipo})' class="btn btn-primary">Detalle Pais</a>
+                            <a href='@Url.Action("DetalleEquipo","Home", new{IdEquipo = @eq.IdEquipo})' class="btn btn-primary">Detalle Pais</a>
                         </div>
                     </div>
                 </div>

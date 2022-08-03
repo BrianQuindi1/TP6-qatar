@@ -1,24 +1,41 @@
-<html>
-    <head>
-        <title> Detalle Equipo </title>
-        
-    </head>
-
-    <body>
-        
-    
-    @foreach(Equipo eq in ViewBag.listaEquipos){
-    <tr>
-        <td>@eq.IdEquipo</td>
-        <td>@eq.Nombre</td>
-        <td>@eq.Escudo</td>
-        <td>
-            <a type="button" class="btn btn-danger" href='@Url.Action("Eliminar", new { id = @eq.IdEquipo } )'>
-                Eliminar
-            </a>
-        </td>
-    </tr>
+@{
+    ViewData["Title"] = "Detalle Pais";
 }
 
-</body>
-</html>
+<div>
+    <h1>@ViewBag.DetalleEquipo.Nombre</h1>
+    <div class="row">
+        <div class="col-7">
+            <img class="tamanoImg" src="/imagenes/@ViewBag.DetalleEquipo.Escudo">
+        </div>
+        <div class="col-7">
+            <img class="tamanoImg" src="/imagenes/@ViewBag.DetalleEquipo.Camiseta">
+        </div>
+    </div>
+    <h1>Copas Ganadas: @ViewBag.DetalleEquipo.CopasGanadas</h1>
+    <h1>Continente: @ViewBag.DetalleEquipo.Continente</h1>
+    <h2>Jugadores</h2>
+</div>
+
+@foreach (Jugador jug in @ViewBag.DetalleJugador)
+{
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm">
+                <h4>@jug.Nombre</h4>
+            </div>
+            <div class="col-sm">
+                <form method="post" action='@Url.Action("DetalleJugador","Home")'>
+                <input type="hidden" name="IdEquipo" value="@jug.IdJugador"/>
+                <input name="INFO" class="btn btn-primary" role="button" type="submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    <form method="post" action='@Url.Action("AgregarJugador","Home")'>
+        <input type="hidden" name="IdEquipo" value="@ViewBag.DetalleEquipo.IdEquipo"/>
+        <input name="INFO" class="btn btn-primary" role="button" value="Agregar Jugador" type="submit"/>
+    </form>
+</div>

@@ -1,8 +1,12 @@
-@{
-    ViewData["Title"] = "Agregar jugador";
-}
+<div>
+    <form method="post" action='@Url.Action("AgregarJugador","Home")' enctype="multipart/form-data">
+        <input type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo"/>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <input type="text" name="Nombre" placeholder="Nombre y apellido del jugador" id="Nombre" size="30" maxlenght="30" /><br/>
+        <input type="DateTime" name="FechaDeNacimiento" placeholder="Fecha de Nacimiento" id="Fecha de Nacimiento" size="30" maxlenght="10" /><br/>
+        <input type="text" name="EquipoActual" placeholder="Ingrese el equipo actual" id="EquipoActual" size="30" maxlenght="100" /><br/>
+        <input type="file" name="Foto" />
+
+        <input name="AGREGAR +" class="bt btn-primary" role="button" type="submit" />
+    </form>
 </div>
