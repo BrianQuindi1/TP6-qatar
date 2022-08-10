@@ -39,12 +39,13 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult GuardarJugador(int idJugador, int idEquipo, string nombre, DateTime fechaDeNacimiento, string foto, string equipoActual)
+    public IActionResult GuardarJugador(Jugador DetalleJugador, string foto)
     {
-        Jugador jug = new Jugador(idJugador, idEquipo, nombre, fechaDeNacimiento, foto, equipoActual);
-        BD.AgregarJugador(jug);
+       
+     
+        BD.AgregarJugador(DetalleJugador);
         
-        //BD.AgregarJugador(NuevoJugador);
+        
         return View("DetalleEquipo");
     }
 

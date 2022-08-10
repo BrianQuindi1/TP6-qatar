@@ -15,7 +15,7 @@ namespace TP6_qatar.Models;
             string sql = "INSERT INTO Jugador VALUES ( @pidEquipo, @pnombre, @pfechaDeNacimiento, @pfoto, @pequipoActual)";
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
-            db.Execute(sql, new { pidEquipo = jug.idEquipo, pnombre = jug.Nombre, pfechaDeNacimiento = jug.FechaDeNacimiento, pfoto = jug.Foto, pequipoActual = jug.EquipoActual});
+            //db.Execute(sql, new { pidEquipo = jug.idEquipo, pnombre = jug.Nombre, pfechaDeNacimiento = jug.FechaDeNacimiento, pfoto = jug.Foto, pequipoActual = jug.EquipoActual});
             } 
         }
 
