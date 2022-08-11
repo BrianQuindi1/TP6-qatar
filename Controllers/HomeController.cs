@@ -1,17 +1,22 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP6_qatar.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace TP6_qatar.Controllers;
 
 public class HomeController : Controller
 {
+      private IWebHostEnvironment Environment;
+
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(IWebHostEnvironment environment)
     {
-        _logger = logger;
+        Environment=environment;
     }
+
 
     public IActionResult Index()
     {
@@ -26,9 +31,10 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult VerDetalleJugador(int IdJugador)
+    public IActionResult DetalleJugador(int IdJugador)
     {
-        ViewBag.Jugador = BD.VerInfoJugador(IdJugador);
+        ViewBag.DetalleJugador = BD.VerInfoJugador(IdJugador);
+        ViewBag.DetalleEquipo = BD.VerInfoEquipo( ViewBag.DetalleJugador.idEquipo);
         return View("DetalleJugador");
     }
 
@@ -38,16 +44,7 @@ public class HomeController : Controller
         return View("AgregarJugador");
     }
 
-    [HttpPost]
-    public IActionResult GuardarJugador(Jugador DetalleJugador, string foto)
-    {
-       
-     
-        BD.AgregarJugador(DetalleJugador);
-        
-        
-        return View("DetalleEquipo");
-    }
+ 
 
     public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
     {
@@ -59,9 +56,31 @@ public class HomeController : Controller
         return View();
     }
 
+
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+
+       [HttpPost]
+    public IActionResult GuardarJugador(Jugador DetalleJugador, IFormFile Foto)
+    {
+        
+        if(Foto.Length>0)
+        {
+            string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + Foto.FileName;
+            using(var stream=System.IO.File.Create(wwwRootLocal))
+            {
+                Foto.CopyToAsync(stream);
+            }
+        }
+        Jugador Jug= new Jugador(DetalleJugador.IdJugador,DetalleJugador.idEquipo, DetalleJugador.Nombre, DetalleJugador.FechaDeNacimiento,(""+ Foto.FileName), DetalleJugador.EquipoActual);
+        BD.GuardarJugador(Jug);
+        return RedirectToAction(Url.Action("DetalleEquipo", "Home", new {IdEquipo = DetalleJugador.idEquipo}));
+
+     }
 }

@@ -10,12 +10,12 @@ namespace TP6_qatar.Models;
         private static string _connectionString = 
         @"Server=127.0.0.1;DataBase=TP06-Qatar;Trusted_Connection=True";
         
-        public static void AgregarJugador(Jugador jug)
+        public static void GuardarJugador(Jugador jug)
         {
             string sql = "INSERT INTO Jugador VALUES ( @pidEquipo, @pnombre, @pfechaDeNacimiento, @pfoto, @pequipoActual)";
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
-            //db.Execute(sql, new { pidEquipo = jug.idEquipo, pnombre = jug.Nombre, pfechaDeNacimiento = jug.FechaDeNacimiento, pfoto = jug.Foto, pequipoActual = jug.EquipoActual});
+            db.Execute(sql, new { pidEquipo = jug.idEquipo, pnombre = jug.Nombre, pfechaDeNacimiento = jug.FechaDeNacimiento, pfoto = jug.Foto, pequipoActual = jug.EquipoActual});
             } 
         }
 
@@ -40,7 +40,7 @@ namespace TP6_qatar.Models;
         public static Jugador VerInfoJugador(int IdJugador)
         {
             Jugador Juga = null;
-            string sql = "SELECT * FROM Jugador WHERE IdJugador = @pdJugador";
+            string sql = "SELECT * FROM Jugador WHERE IdJugador = @pidJugador";
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
             Juga = db.QueryFirstOrDefault<Jugador>(sql, new { pidJugador = IdJugador});
@@ -61,10 +61,10 @@ namespace TP6_qatar.Models;
         public static List<Jugador> ListarJugadores(int IdEquipo)
         {
             List<Jugador> listaJugadores = new List<Jugador>();
-            string sql = "SELECT * FROM Jugador";
+            string sql = "SELECT * FROM Jugador where IdEquipo= @pIdEquipo";
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
-            listaJugadores = db.Query<Jugador>(sql).ToList();
+            listaJugadores = db.Query<Jugador>(sql, new { pidEquipo = IdEquipo}) .ToList();
             }
         return listaJugadores;
         }

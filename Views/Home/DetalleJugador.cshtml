@@ -2,7 +2,15 @@
     ViewData["Title"] = "Detalle Jugador";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <h1>@ViewBag.DetalleJugador.Nombre</h1>
+    <div class="row">
+        <div class="col-7">
+            <img class="tamanoImg" src="/imagenes/@ViewBag.DetalleJugador.Foto">
+        </div>
+    </div>
+    <h1>Nombre: @ViewBag.DetalleJugador.Nombre</h1>
+    <h2>Fecha de Nacimiento: @ViewBag.DetalleJugador.FechaDeNacimiento</h2>
 </div>
+
+
