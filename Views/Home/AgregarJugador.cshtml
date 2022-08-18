@@ -1,0 +1,12 @@
+<div>
+    <form method="POST" action='@Url.Action("GuardarJugador","Home")' enctype="multipart/form-data">
+        <input type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo"/>
+
+        <input type="text" name="Nombre" placeholder="Nombre y apellido del jugador" id="Nombre" size="30" maxlenght="30" /><br/>
+        <input type="date" name="FechaDeNacimiento" placeholder="Fecha de Nacimiento" id="Fecha de Nacimiento" size="30" maxlenght="10" /><br/> 
+        <input type="text" name="EquipoActual" placeholder="Ingrese el equipo actual" id="EquipoActual" size="30" maxlenght="100" /><br/>
+        <input type="file" name="foto" />   
+
+        <input name="AGREGAR +" class="bt btn-primary" role="button" value="Agregar Jugador" type="submit" />
+    </form>
+</div>

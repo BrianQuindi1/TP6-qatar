@@ -1,0 +1,64 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.card-image-equipo {height:115px; width:auto; margin: 0 auto; display:block;}
+
+.card-image-equipo:hover {opacity:0.7;}
+
+.tamanoImg{
+  height: 300px;
+  width: auto;
+}
+
+.fondo-completo{
+  background-image: url("/Imagenes/fondoQatar.jpg");
+}
+
+.card{
+  background-color: rgb(139,13,53);
+}
+
+.card-title{
+  color: beige;
+}
+
+.textoBlanco{
+  color: beige;
+}
+
+.beige{
+  color:beige;
+}
+
+.navBarFondo{
+  background-image: url("/Imagenes/fonditoxd.jfif");
+}
+
+.cardsEspacio{
+  margin-top: 2.5%;
+}
+
+.homeMargin{
+  margin-top: 27.5%;
+}
+
+/*.navBarImg{
+  max-width:80px; margin-left: 1620px; margin-right: 0px; margin-top: -3px;
+
+}*/

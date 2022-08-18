@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Detalle Jugador";
+}
+
+<div>
+    <h1 class="textoBlanco">@ViewBag.DetalleJugador.Nombre</h1>
+    <div class="row">
+        <div class="col-7">
+            <img class="tamanoImg" src="/imagenes/@ViewBag.DetalleJugador.Foto">
+        </div>
+    </div>
+    <h1 class="textoBlanco">Nombre: @ViewBag.DetalleJugador.Nombre</h1>
+    <h2 class="textoBlanco">Fecha de Nacimiento: @ViewBag.DetalleJugador.FechaDeNacimiento</h2>
+    <h2 class="textoBlanco">Equipo Actual: @ViewBag.DetalleJugador.EquipoActual</h2>
+</div>
+
+
+<div>
+    <form method="post" action='@Url.Action("EliminarJugador","Home")'>
+    <input type="hidden" name="IdJugador" value="@ViewBag.DetalleJugador.IdJugador"/>
+    <input name="INFO" class="btn btn-primary" role="button" value="Eliminar Jugador" type="submit"/>
+    </form>
+</div>
